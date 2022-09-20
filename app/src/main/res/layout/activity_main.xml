@@ -4,26 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/color_1"
+    tools:context=".view.MainActivity">
 
     <FrameLayout
-        android:id="@+id/top_bar"
+        android:id="@+id/action_bar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/main_color"
+        android:paddingHorizontal="5pt"
         app:layout_constraintBottom_toTopOf="@id/main_list"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="CinemaPlay"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:src="@android:drawable/ic_menu_search" />
+
     </FrameLayout>
 
-
-    <androidx.recyclerview.widget.RecyclerView
+    <FrameLayout
         android:id="@+id/main_list"
         android:layout_width="match_parent"
+        android:layout_height="120pt"
+        app:layout_constraintBottom_toTopOf="@id/movies_list"
+        app:layout_constraintTop_toBottomOf="@id/action_bar">
+
+        <ImageView
+            android:id="@+id/popular_list_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/download" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/trend_movies"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E631363E"
+            android:paddingHorizontal="10pt"
+            android:paddingVertical="6pt"
+            android:scrollbars="horizontal" />
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movies_list"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/main_color"
         android:paddingVertical="5pt"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_bar" />
+        app:layout_constraintTop_toBottomOf="@id/main_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

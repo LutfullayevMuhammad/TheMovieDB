@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/main_color"
+    android:background="@color/color_1"
     android:paddingHorizontal="5pt"
     android:paddingVertical="8pt">
 
@@ -36,4 +36,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_image"
         tools:text="Наоми" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
