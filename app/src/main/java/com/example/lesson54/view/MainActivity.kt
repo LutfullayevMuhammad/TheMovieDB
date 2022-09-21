@@ -1,9 +1,11 @@
 package com.example.lesson54.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.example.lesson54.core.adapter.popular.PopularMovieListAdapter
@@ -19,6 +21,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.SingleObserver
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), Presenter.View {
@@ -61,11 +64,28 @@ class MainActivity : AppCompatActivity(), Presenter.View {
         presenter = PresenterImp(this)
         presenter?.loadData()
         // loading actions
+        var scrollPosition = binding.trendMovies.currentItem
+        val handler = Handler()
+        val update = Runnable {
+            if (scrollPosition == popularListAdapter.data.size) {
+                scrollPosition = 0
+            }
+            //The second parameter ensures smooth scrolling
+            binding.trendMovies.setCurrentItem(scrollPosition++, true)
+        }
+
+        Timer().schedule(object : TimerTask() {
+            // task to be scheduled
+            override fun run() {
+                handler.post(update)
+            }
+        }, 3000, 3000)
         binding.trendMovies.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 binding.popularListBackground.load("https://image.tmdb.org/t/p/w500" + popularListAdapter.data[position].posterPath)
+                scrollPosition = binding.trendMovies.currentItem
             }
         })
     }
