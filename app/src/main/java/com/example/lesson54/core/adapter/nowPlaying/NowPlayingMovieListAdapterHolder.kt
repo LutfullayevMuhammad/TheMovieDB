@@ -1,17 +1,19 @@
-package com.example.lesson54.core.adapter.popular
+package com.example.lesson54.core.adapter.nowPlaying
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.lesson54.R
+import com.example.lesson54.core.models.nowPlaying.NowPlayingResult
 import com.example.lesson54.core.models.popular.PopularResult
+import com.example.lesson54.databinding.NowPlayingMoviesItemBinding
 import com.example.lesson54.databinding.TopRatedMoviesItemBinding
 import com.example.lesson54.view.MainActivity
 
-class PopularMovieListAdapterHolder(val binding: TopRatedMoviesItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class NowPlayingMovieListAdapterHolder(val binding: NowPlayingMoviesItemBinding):RecyclerView.ViewHolder(binding.root) {
 
     @SuppressLint("SetTextI18n")
-    fun bindData(data: PopularResult) {
+    fun bindData(data: NowPlayingResult) {
         // image
         binding.poster.load("https://image.tmdb.org/t/p/w500" + data.backdropPath)
         // vote text

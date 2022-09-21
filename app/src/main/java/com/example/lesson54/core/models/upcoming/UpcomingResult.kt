@@ -1,9 +1,9 @@
-package com.example.lesson54.core.models.topRated
+package com.example.lesson54.core.models.upcoming
 
 
 import com.google.gson.annotations.SerializedName
 
-data class  Result(
+data class UpcomingResult(
     @SerializedName("adult")
     val adult: Boolean,
     @SerializedName("backdrop_path")

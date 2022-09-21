@@ -3,18 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/all_button.xml" value="0.1165" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/menu_icon.xml" value="0.1165" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/rate_1_back.xml" value="0.1165" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/rate_2_back.xml" value="0.1165" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/search_icon.xml" value="0.1165" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_card.xml" value="0.22826086956521738" />
-        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_collection.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_collection.xml" value="0.2" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_movies.xml" value="0.22826086956521738" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/drawable-v24/rate_2_back.xml" value="0.155" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/drawable/rate_1_back.xml" value="0.155" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/drawable/rate_2_back.xml" value="0.155" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/item_collection.xml" value="0.16983695652173914" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/item_movies.xml" value="0.16983695652173914" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/top_rated_movies_item.xml" value="0.19895833333333332" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/trending_movies_item.xml" value="0.25" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_now_playing.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/main_item.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/now_playing_movies_item.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/top_rated_movies_item.xml" value="0.22826086956521738" />
       </map>
     </option>
   </component>
