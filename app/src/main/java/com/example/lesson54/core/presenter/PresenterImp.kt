@@ -23,13 +23,17 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
 
     val rxs = ArrayList<Disposable>()
 
+    companion object{
+        lateinit var page : String
+    }
+
     override fun loadData() {
 
         val call = MovieAPIClient.movieAPI()
         view.dataState(true)
 
         compositeDisposable.add(
-            call.popularMovies()
+            call.popularMovies(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<PopularMovieResponse>() {
@@ -50,7 +54,7 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
         view.dataState(true)
 
         compositeDisposable.add(
-            call.topRatedMovies()
+            call.topRatedMovies(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<TopRatedMovieResponse>() {
@@ -69,7 +73,7 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
 
         view.dataState(true)
         compositeDisposable.add(
-            call.nowPlayingMovies()
+            call.nowPlayingMovies(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<NowPlayingMovieResponse>() {
@@ -87,7 +91,7 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
         )
         view.dataState(true)
         compositeDisposable.add(
-            call.upcomingMovies()
+            call.upcomingMovies(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<UpcomingMovieResponse>() {

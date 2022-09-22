@@ -4,7 +4,10 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
@@ -37,6 +40,7 @@ class HomeFragment : BaseFragment() ,HomePresenter.View{
     private val nowPlayingAdapter = NowPlayingAdapter()
     private val upcomingAdapter = UpcomingAdapter()
     private var presenter: HomePresenter.Presenter? = null
+
 
     val handler = Handler()
     var runnable:Runnable?=null
@@ -99,11 +103,16 @@ class HomeFragment : BaseFragment() ,HomePresenter.View{
         binding.searchHome.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
             findNavController().navigate(action)
+        }
 
+        binding.popularAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragment()
+            findNavController().navigate(action)
         }
     }
 
     override fun onFragmentCreated() {
+
         Timer().schedule(object : TimerTask() {
             // task to be scheduled
             override fun run() {

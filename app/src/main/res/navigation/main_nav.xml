@@ -12,10 +12,18 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allFragment"
+            app:destination="@id/allFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
         tools:layout="@layout/fragment_search"
         android:name="com.example.lesson54.view.search.SearchFragment"
         android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/allFragment"
+        tools:layout="@layout/fragment_all"
+        android:name="com.example.lesson54.view.all.AllFragment"
+        android:label="AllFragment" />
 </navigation>
