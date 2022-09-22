@@ -21,7 +21,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="#34000000"/>
 
         <TextView
             android:id="@+id/vote_average"
@@ -50,6 +51,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.98"
             tools:text="2022 • fantasy, action" />
+
 
         <TextView
             android:id="@+id/title"
