@@ -10,19 +10,19 @@ import retrofit2.http.GET
 
 interface MovieAPI {
 
-    @GET("3/movie/popular?api_key=ae228a09fd0c71679dabcf913aea5d11&language=ru-RU")
+    @GET("3/movie/popular?api_key=ae228a09fd0c71679dabcf913aea5d11&language=en-EN")
     fun popularMovies(): Single<PopularMovieResponse>
 
-    @GET("3/movie/top_rated?api_key=ae228a09fd0c71679dabcf913aea5d11&language=ru-RU")
+    @GET("3/movie/top_rated?api_key=ae228a09fd0c71679dabcf913aea5d11&language=en-EN")
     fun topRatedMovies(): Single<TopRatedMovieResponse>
 
-    @GET("3/movie/now_playing?api_key=ae228a09fd0c71679dabcf913aea5d11&language=ru-RU")
+    @GET("3/movie/now_playing?api_key=ae228a09fd0c71679dabcf913aea5d11&language=en-EN")
     fun nowPlayingMovies(): Single<NowPlayingMovieResponse>
 
-    @GET("3/movie/upcoming?api_key=ae228a09fd0c71679dabcf913aea5d11&language=ru-RU")
+    @GET("3/movie/upcoming?api_key=ae228a09fd0c71679dabcf913aea5d11&language=en-EN")
     fun upcomingMovies(): Single<UpcomingMovieResponse>
 
-    @GET("3/genre/movie/list?api_key=ae228a09fd0c71679dabcf913aea5d11&language=ru-RU")
+    @GET("3/genre/movie/list?api_key=ae228a09fd0c71679dabcf913aea5d11&language=en-EN")
     fun genres(): Single<MovieGenreResponse>
 
 }
