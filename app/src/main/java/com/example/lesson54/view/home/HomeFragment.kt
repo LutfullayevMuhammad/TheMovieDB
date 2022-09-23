@@ -25,7 +25,6 @@ import com.example.lesson54.databinding.FragmentHomeBinding
 import com.example.lesson54.view.MainActivity
 import com.example.lesson54.view.base.BaseFragment
 import java.util.*
-import kotlin.collections.ArrayList
 
 class HomeFragment : BaseFragment(), HomePresenter.View {
 
@@ -39,8 +38,8 @@ class HomeFragment : BaseFragment(), HomePresenter.View {
     private var runnable: Runnable? = null
     private var scrollPosition = 0
 
-    override fun getLayout(inflater: LayoutInflater, container: ViewGroup?): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+    override fun getLayout(inflater: LayoutInflater, parent: ViewGroup?): View {
+        binding = FragmentHomeBinding.inflate(inflater, parent, false)
         return binding.root
     }
 
@@ -95,9 +94,22 @@ class HomeFragment : BaseFragment(), HomePresenter.View {
             findNavController().navigate(action)
         }
         binding.popularAllBtn.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToAllFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragmentPopular()
             findNavController().navigate(action)
         }
+        binding.nowPlayingAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragmentNowPlaying()
+            findNavController().navigate(action)
+        }
+        binding.topRatedAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragmentTopRated()
+            findNavController().navigate(action)
+        }
+        binding.upcomingAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragmentUpcoming()
+            findNavController().navigate(action)
+        }
+
     }
 
     override fun onFragmentCreated() {
@@ -141,5 +153,6 @@ class HomeFragment : BaseFragment(), HomePresenter.View {
             MainActivity.GENRES_DATA.addAll(g.genres)
         }
     }
+
 
 }

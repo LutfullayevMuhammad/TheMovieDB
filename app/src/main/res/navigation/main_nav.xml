@@ -14,8 +14,17 @@
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_allFragment"
-            app:destination="@id/allFragment" />
+            android:id="@+id/action_homeFragment_to_allFragmentUpcoming"
+            app:destination="@id/allFragmentUpcoming" />
+        <action
+            android:id="@+id/action_homeFragment_to_allFragmentNowPlaying"
+            app:destination="@id/allFragmentNowPlaying" />
+        <action
+            android:id="@+id/action_homeFragment_to_allFragmentPopular"
+            app:destination="@id/allFragmentPopular" />
+        <action
+            android:id="@+id/action_homeFragment_to_allFragmentTopRated"
+            app:destination="@id/allFragmentTopRated" />
     </fragment>
 
     <fragment
@@ -25,8 +34,23 @@
         tools:layout="@layout/fragment_search" />
     
     <fragment
-        android:id="@+id/allFragment"
-        android:name="com.example.lesson54.view.all.AllFragment"
-        android:label="AllFragment"
-        tools:layout="@layout/fragment_all" />
+        android:id="@+id/allFragmentNowPlaying"
+        tools:layout="@layout/fragment_all_now_playing"
+        android:name="com.example.lesson54.view.all.AllFragmentNowPlaying"
+        android:label="AllFragmentNowPlaying" />
+    <fragment
+        android:id="@+id/allFragmentPopular"
+        tools:layout="@layout/fragment_all_popular"
+        android:name="com.example.lesson54.view.all.AllFragmentPopular"
+        android:label="AllFragmentPopular" />
+    <fragment
+        android:id="@+id/allFragmentTopRated"
+        tools:layout="@layout/fragment_all_top_rated"
+        android:name="com.example.lesson54.view.all.AllFragmentTopRated"
+        android:label="AllFragmentTopRated" />
+    <fragment
+        android:id="@+id/allFragmentUpcoming"
+        tools:layout="@layout/fragment_all_upcoming"
+        android:name="com.example.lesson54.view.all.AllFragmentUpcoming"
+        android:label="AllFragmentUpcoming" />
 </navigation>
