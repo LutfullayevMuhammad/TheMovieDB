@@ -69,7 +69,7 @@ class AllFragmentPopular : BaseFragment(), HomePresenter.View {
 
         presenter = PresenterImp(this, "1")
 
-        presenter?.loadGenres()
+//        presenter?.loadGenres()
         presenter?.loadData()
     }
 

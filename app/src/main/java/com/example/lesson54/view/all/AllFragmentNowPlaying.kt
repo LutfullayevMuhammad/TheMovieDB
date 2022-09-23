@@ -65,8 +65,8 @@ class AllFragmentNowPlaying : BaseFragment(), HomePresenter.View {
             requireActivity(), 2
         )
         presenter = PresenterImp(this, "1")
-
-        presenter?.loadGenres()
+//
+//        presenter?.loadGenres()
         presenter?.loadData()
     }
 
