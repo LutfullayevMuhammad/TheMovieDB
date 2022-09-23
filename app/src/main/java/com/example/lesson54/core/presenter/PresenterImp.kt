@@ -24,14 +24,13 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
     val rxs = ArrayList<Disposable>()
 
     companion object{
-        lateinit var page : String
+         var page : Int = 1
     }
 
     override fun loadData() {
 
         val call = MovieAPIClient.movieAPI()
         view.dataState(true)
-
         compositeDisposable.add(
             call.popularMovies(page)
                 .subscribeOn(Schedulers.newThread())
@@ -107,6 +106,8 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
 
                 })
         )
+
+
     }
 
     override fun refreshData() {

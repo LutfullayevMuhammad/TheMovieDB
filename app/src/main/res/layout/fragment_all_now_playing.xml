@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Popular"
+            android:text="Now playing"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -49,6 +49,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:padding="10dp" />
+        android:padding="5dp" />
 
 </LinearLayout>

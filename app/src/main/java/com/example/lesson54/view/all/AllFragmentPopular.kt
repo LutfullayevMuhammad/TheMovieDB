@@ -1,8 +1,12 @@
 package com.example.lesson54.view.all
 
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.lesson54.core.adapter.all.popular.PopularAllAdapter
 import com.example.lesson54.core.models.movieGenre.MovieGenreResponse
 import com.example.lesson54.core.models.nowPlaying.NowPlayingResult
 import com.example.lesson54.core.models.popular.PopularResult
@@ -10,50 +14,71 @@ import com.example.lesson54.core.models.topRated.TopRatedResult
 import com.example.lesson54.core.models.upcoming.UpcomingResult
 import com.example.lesson54.core.presenter.HomePresenter
 import com.example.lesson54.core.presenter.PresenterImp
+import com.example.lesson54.databinding.FragmentAllPopularBinding
+import com.example.lesson54.view.MainActivity
 import com.example.lesson54.view.base.BaseFragment
+import java.util.*
+import kotlin.collections.ArrayList
 
-class AllFragment:BaseFragment(),HomePresenter.View {
+class AllFragmentPopular : BaseFragment(), HomePresenter.View {
+
+    private lateinit var binding: FragmentAllPopularBinding
+
+    private val popularAllListAdapter = PopularAllAdapter()
+    private var presenter: HomePresenter.Presenter? = null
+
+    var page = 1
+
     override fun dataState(isLoading: Boolean) {
-        TODO("Not yet implemented")
+
     }
 
     override fun showData(popularData: ArrayList<PopularResult>) {
-        TODO("Not yet implemented")
+        popularAllListAdapter.data = popularData
     }
 
     override fun showTopRatedData(topRatedData: ArrayList<TopRatedResult>) {
-        TODO("Not yet implemented")
+
     }
 
     override fun showNowPlayingData(nowPlayingData: ArrayList<NowPlayingResult>) {
-        TODO("Not yet implemented")
+
     }
 
     override fun showUpcoming(upcomingData: ArrayList<UpcomingResult>) {
-        TODO("Not yet implemented")
+
     }
 
     override fun showError(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
     }
 
     override fun setGenres(g: MovieGenreResponse) {
-        TODO("Not yet implemented")
+        MainActivity.GENRES_DATA.addAll(g.genres)
     }
 
     override fun getLayout(inflater: LayoutInflater, container: ViewGroup?): View {
-        TODO("Not yet implemented")
+        binding = FragmentAllPopularBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onFragmentReady() {
-        TODO("Not yet implemented")
+        binding.allList.adapter = popularAllListAdapter
+        binding.allList.layoutManager = GridLayoutManager(
+            requireActivity(), 2
+        )
+
+        presenter = PresenterImp(this)
+
+        presenter?.loadGenres()
+        presenter?.loadData()
     }
 
     override fun onFragmentCreated() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onFragmentClosed() {
-        TODO("Not yet implemented")
+        presenter?.cancel()
     }
 }

@@ -4,15 +4,11 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import coil.load
-import com.example.lesson54.R
 import com.example.lesson54.core.adapter.nowPlaying.NowPlayingAdapter
 import com.example.lesson54.core.adapter.popular.PopularMovieListAdapter
 import com.example.lesson54.core.adapter.popular.ZoomOutPageTransformer
@@ -29,9 +25,8 @@ import com.example.lesson54.databinding.FragmentHomeBinding
 import com.example.lesson54.view.MainActivity
 import com.example.lesson54.view.base.BaseFragment
 import java.util.*
-import kotlin.collections.ArrayList
 
-class HomeFragment : BaseFragment() ,HomePresenter.View{
+class HomeFragment : BaseFragment(), HomePresenter.View {
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -43,27 +38,33 @@ class HomeFragment : BaseFragment() ,HomePresenter.View{
 
 
     val handler = Handler()
-    var runnable:Runnable?=null
-    var scrollPosition=0
+    var runnable: Runnable? = null
+    var scrollPosition = 0
 
     override fun getLayout(inflater: LayoutInflater, parent: ViewGroup?): View {
-        binding = FragmentHomeBinding.inflate(inflater,parent,false)
+        binding = FragmentHomeBinding.inflate(inflater, parent, false)
         return binding.root
     }
 
     override fun onFragmentReady() {
 
         binding.topRatedList.adapter = topRatedAdapter
-        binding.topRatedList.layoutManager = LinearLayoutManager(requireActivity(),
-            LinearLayoutManager.HORIZONTAL,false)
+        binding.topRatedList.layoutManager = LinearLayoutManager(
+            requireActivity(),
+            LinearLayoutManager.HORIZONTAL, false
+        )
 
         binding.nowPlayingList.adapter = nowPlayingAdapter
-        binding.nowPlayingList.layoutManager = LinearLayoutManager(requireActivity(),
-            LinearLayoutManager.HORIZONTAL,false)
+        binding.nowPlayingList.layoutManager = LinearLayoutManager(
+            requireActivity(),
+            LinearLayoutManager.HORIZONTAL, false
+        )
 
         binding.upcomingList.adapter = upcomingAdapter
-        binding.upcomingList.layoutManager = LinearLayoutManager(requireActivity(),
-            LinearLayoutManager.HORIZONTAL,false)
+        binding.upcomingList.layoutManager = LinearLayoutManager(
+            requireActivity(),
+            LinearLayoutManager.HORIZONTAL, false
+        )
 
 
         // preparing view-pager
@@ -80,7 +81,7 @@ class HomeFragment : BaseFragment() ,HomePresenter.View{
         presenter?.loadGenres()
         presenter?.loadData()
         // loading actions
-         scrollPosition = binding.trendMovies.currentItem
+        scrollPosition = binding.trendMovies.currentItem
 
         runnable = Runnable {
             if (scrollPosition == popularListAdapter.data.size) {
@@ -106,7 +107,20 @@ class HomeFragment : BaseFragment() ,HomePresenter.View{
         }
 
         binding.popularAllBtn.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToAllFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragmentPopular()
+            findNavController().navigate(action)
+        }
+
+        binding.nowPlayingAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragmentNowPlaying()
+            findNavController().navigate(action)
+        }
+        binding.topRatedAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragmentTopRated()
+            findNavController().navigate(action)
+        }
+        binding.upcomingAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragmentUpcoming()
             findNavController().navigate(action)
         }
     }
@@ -154,7 +168,6 @@ class HomeFragment : BaseFragment() ,HomePresenter.View{
     override fun setGenres(g: MovieGenreResponse) {
         MainActivity.GENRES_DATA.addAll(g.genres)
     }
-
 
 
 }
