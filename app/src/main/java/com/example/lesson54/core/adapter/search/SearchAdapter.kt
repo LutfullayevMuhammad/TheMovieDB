@@ -1,6 +1,7 @@
 package com.example.lesson54.core.adapter.search
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchListAdapterHolder>() {
 
     override fun onBindViewHolder(holder: SearchListAdapterHolder, position: Int) {
         holder.bindData(data[position])
+        Log.i("TAG", position.toString())
     }
 
     override fun getItemCount(): Int = data.size

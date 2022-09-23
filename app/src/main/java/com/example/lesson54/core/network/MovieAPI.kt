@@ -42,4 +42,11 @@ interface MovieAPI {
     @GET("3/genre/movie/list?api_key=ae228a09fd0c71679dabcf913aea5d11&language=en-EN")
     fun genres(): Single<MovieGenreResponse>
 
+    @GET("/3/search/movie")
+    fun searchMovie(
+        @Query("api_key") apiKey: String,
+        @Query("query") movieName: String,
+        @Query("page") pageNum: String
+    ): Single<PopularMovieResponse>
+
 }

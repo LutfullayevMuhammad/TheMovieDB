@@ -19,7 +19,7 @@ import com.example.lesson54.databinding.FragmentAllUpcomingBinding
 import com.example.lesson54.view.MainActivity
 import com.example.lesson54.view.base.BaseFragment
 
-class AllFragmentUpcoming:BaseFragment(),HomePresenter.View {
+class AllFragmentUpcoming : BaseFragment(), HomePresenter.View {
 
     private lateinit var binding: FragmentAllUpcomingBinding
 
@@ -67,7 +67,7 @@ class AllFragmentUpcoming:BaseFragment(),HomePresenter.View {
             requireActivity(), 2
         )
 
-        presenter = PresenterImp(this)
+        presenter = PresenterImp(this, "1")
 
         presenter?.loadGenres()
         presenter?.loadData()

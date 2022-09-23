@@ -19,7 +19,7 @@ import com.example.lesson54.databinding.FragmentAllTopRatedBinding
 import com.example.lesson54.view.MainActivity
 import com.example.lesson54.view.base.BaseFragment
 
-class AllFragmentTopRated:BaseFragment(),HomePresenter.View {
+class AllFragmentTopRated : BaseFragment(), HomePresenter.View {
 
     private lateinit var binding: FragmentAllTopRatedBinding
 
@@ -67,7 +67,7 @@ class AllFragmentTopRated:BaseFragment(),HomePresenter.View {
             requireActivity(), 2
         )
 
-        presenter = PresenterImp(this)
+        presenter = PresenterImp(this, "1")
 
         presenter?.loadGenres()
         presenter?.loadData()
