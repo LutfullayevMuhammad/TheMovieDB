@@ -5,6 +5,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lesson54.core.adapter.search.SearchAdapter
 import com.example.lesson54.core.models.movieGenre.MovieGenreResponse
@@ -25,7 +26,8 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
     private lateinit var binding: FragmentSearchBinding
     private val adapter = SearchAdapter()
     private var presenter: HomePresenter.Presenter? = null
-    private var pageNumber = 0
+    private var pageNumber = 1
+    private var searchedText = ""
 
     override fun getLayout(inflater: LayoutInflater, container: ViewGroup?): View {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
@@ -49,16 +51,29 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
                 timer = Timer()
                 timer.schedule(object : TimerTask() {
                     override fun run() {
+                        pageNumber = 1
                         presenter = SearchPresenter(
                             this@SearchFragment,
                             p0.toString(),
                             pageNumber.toString()
                         )
                         presenter?.loadData()
+                        searchedText = p0.toString()
+                        pageNumber++
                     }
                 }, DELAY)
             }
         })
+        // loading actions
+        adapter.onScrollEnd = {
+            presenter = SearchPresenter(
+                this@SearchFragment,
+                searchedText,
+                pageNumber.toString()
+            )
+            presenter?.loadData()
+            pageNumber++
+        }
     }
 
     override fun onFragmentCreated() {}
@@ -79,7 +94,9 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
 
     override fun showUpcoming(upcomingData: ArrayList<UpcomingResult>) {}
 
-    override fun showError(message: String) {}
+    override fun showError(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+    }
 
     override fun setGenres(g: MovieGenreResponse) {}
 }

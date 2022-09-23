@@ -39,9 +39,6 @@ class PopularMovieListAdapterHolder(val binding: TopRatedMoviesItemBinding) : Re
         }
         if (binding.info.text == "") {
             binding.info.text = "$date • " + buildString {
-//                movieGenres.forEach {
-//                    append("$it,")
-//                }
                 for (i in 0 until movieGenres.size - 1) {
                     append("${movieGenres[i]}, ")
                 }

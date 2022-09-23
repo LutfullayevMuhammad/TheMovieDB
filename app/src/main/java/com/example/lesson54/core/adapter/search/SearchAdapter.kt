@@ -12,12 +12,12 @@ import com.example.lesson54.databinding.ItemSearchBinding
 
 class SearchAdapter : RecyclerView.Adapter<SearchListAdapterHolder>() {
 
+    var onScrollEnd: (() -> Unit)? = null
+
     var data = ArrayList<PopularResult>()
-        @SuppressLint("NotifyDataSetChanged")
         set(value) {
-            field.clear()
             field.addAll(value)
-            notifyDataSetChanged()
+            notifyItemRangeInserted(field.size - value.size, value.size)
         }
 
     override fun onCreateViewHolder(
@@ -29,7 +29,9 @@ class SearchAdapter : RecyclerView.Adapter<SearchListAdapterHolder>() {
 
     override fun onBindViewHolder(holder: SearchListAdapterHolder, position: Int) {
         holder.bindData(data[position])
-        Log.i("TAG", position.toString())
+        if (position == data.size - 1) {
+            onScrollEnd?.invoke()
+        }
     }
 
     override fun getItemCount(): Int = data.size

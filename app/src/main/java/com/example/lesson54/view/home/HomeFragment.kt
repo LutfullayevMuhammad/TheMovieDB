@@ -137,8 +137,9 @@ class HomeFragment : BaseFragment(), HomePresenter.View {
     }
 
     override fun setGenres(g: MovieGenreResponse) {
-        MainActivity.GENRES_DATA.addAll(g.genres)
+        if (MainActivity.GENRES_DATA.size == 0) {
+            MainActivity.GENRES_DATA.addAll(g.genres)
+        }
     }
-
 
 }
