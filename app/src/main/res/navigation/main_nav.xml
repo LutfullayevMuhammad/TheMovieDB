@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
     app:startDestination="@id/homeFragment">
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.lesson54.view.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
@@ -16,14 +17,16 @@
             android:id="@+id/action_homeFragment_to_allFragment"
             app:destination="@id/allFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/searchFragment"
-        tools:layout="@layout/fragment_search"
         android:name="com.example.lesson54.view.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search" />
+    
     <fragment
         android:id="@+id/allFragment"
-        tools:layout="@layout/fragment_all"
         android:name="com.example.lesson54.view.all.AllFragment"
-        android:label="AllFragment" />
+        android:label="AllFragment"
+        tools:layout="@layout/fragment_all" />
 </navigation>

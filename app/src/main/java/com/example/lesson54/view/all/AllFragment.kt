@@ -10,50 +10,56 @@ import com.example.lesson54.core.models.topRated.TopRatedResult
 import com.example.lesson54.core.models.upcoming.UpcomingResult
 import com.example.lesson54.core.presenter.HomePresenter
 import com.example.lesson54.core.presenter.PresenterImp
+import com.example.lesson54.databinding.FragmentAllBinding
 import com.example.lesson54.view.base.BaseFragment
 
-class AllFragment:BaseFragment(),HomePresenter.View {
-    override fun dataState(isLoading: Boolean) {
-        TODO("Not yet implemented")
-    }
+class AllFragment : BaseFragment(), HomePresenter.View {
 
-    override fun showData(popularData: ArrayList<PopularResult>) {
-        TODO("Not yet implemented")
-    }
-
-    override fun showTopRatedData(topRatedData: ArrayList<TopRatedResult>) {
-        TODO("Not yet implemented")
-    }
-
-    override fun showNowPlayingData(nowPlayingData: ArrayList<NowPlayingResult>) {
-        TODO("Not yet implemented")
-    }
-
-    override fun showUpcoming(upcomingData: ArrayList<UpcomingResult>) {
-        TODO("Not yet implemented")
-    }
-
-    override fun showError(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun setGenres(g: MovieGenreResponse) {
-        TODO("Not yet implemented")
-    }
+    private lateinit var binding: FragmentAllBinding
+    private var presenter: HomePresenter.Presenter? = null
 
     override fun getLayout(inflater: LayoutInflater, container: ViewGroup?): View {
-        TODO("Not yet implemented")
+        binding = FragmentAllBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onFragmentReady() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onFragmentCreated() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onFragmentClosed() {
-        TODO("Not yet implemented")
+
+    }
+
+    override fun dataState(isLoading: Boolean) {
+
+    }
+
+    override fun showData(popularData: ArrayList<PopularResult>) {
+
+    }
+
+    override fun showTopRatedData(topRatedData: ArrayList<TopRatedResult>) {
+
+    }
+
+    override fun showNowPlayingData(nowPlayingData: ArrayList<NowPlayingResult>) {
+
+    }
+
+    override fun showUpcoming(upcomingData: ArrayList<UpcomingResult>) {
+
+    }
+
+    override fun showError(message: String) {
+
+    }
+
+    override fun setGenres(g: MovieGenreResponse) {
+
     }
 }

@@ -17,23 +17,16 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Presenter {
+class PresenterImp(private val view: HomePresenter.View, private val page: String?) :
+    HomePresenter.Presenter {
 
     private val compositeDisposable = CompositeDisposable()
 
-    val rxs = ArrayList<Disposable>()
-
-    companion object{
-        lateinit var page : String
-    }
-
     override fun loadData() {
-
         val call = MovieAPIClient.movieAPI()
         view.dataState(true)
-
         compositeDisposable.add(
-            call.popularMovies(page)
+            call.popularMovies(page, "en-EN", "ae228a09fd0c71679dabcf913aea5d11")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<PopularMovieResponse>() {
@@ -47,18 +40,14 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
                         view.showError(e.message!!)
                         view.dataState(isLoading = false)
                     }
-
                 })
         )
-
         view.dataState(true)
-
         compositeDisposable.add(
-            call.topRatedMovies(page)
+            call.topRatedMovies(page, "en-EN", "ae228a09fd0c71679dabcf913aea5d11")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<TopRatedMovieResponse>() {
-
                     override fun onSuccess(t: TopRatedMovieResponse) {
                         view.showTopRatedData(t.results as ArrayList<TopRatedResult>)
                     }
@@ -67,17 +56,14 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
                         view.showError(e.message!!)
                         view.dataState(false)
                     }
-
                 })
         )
-
         view.dataState(true)
         compositeDisposable.add(
-            call.nowPlayingMovies(page)
+            call.nowPlayingMovies(page, "en-EN", "ae228a09fd0c71679dabcf913aea5d11")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<NowPlayingMovieResponse>() {
-
                     override fun onSuccess(t: NowPlayingMovieResponse) {
                         view.showNowPlayingData(t.results as ArrayList<NowPlayingResult>)
                     }
@@ -86,16 +72,14 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
                         view.showError(e.message!!)
                         view.dataState(false)
                     }
-
                 })
         )
         view.dataState(true)
         compositeDisposable.add(
-            call.upcomingMovies(page)
+            call.upcomingMovies(page, "en-EN", "ae228a09fd0c71679dabcf913aea5d11")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<UpcomingMovieResponse>() {
-
                     override fun onSuccess(t: UpcomingMovieResponse) {
                         view.showUpcoming(t.results as ArrayList<UpcomingResult>)
                     }
@@ -104,7 +88,6 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
                         view.showError(e.message!!)
                         view.dataState(false)
                     }
-
                 })
         )
     }
@@ -115,9 +98,6 @@ class PresenterImp(private val view: HomePresenter.View) : HomePresenter.Present
     }
 
     override fun loadGenres() {
-
-//        Thread.sleep(10_000)
-
         // get genres
         MovieAPIClient.movieAPI().genres()
             .subscribeOn(Schedulers.newThread())
