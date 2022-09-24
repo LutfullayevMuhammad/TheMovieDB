@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "196476038483",
+    "project_id": "cinemaplay-dc307",
+    "storage_bucket": "cinemaplay-dc307.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196476038483:android:b39baafb73c846452a05a6",
+        "android_client_info": {
+          "package_name": "com.example.lesson54"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196476038483-jua3ftdhqs4n68gp3ogbg9rd6nhkk1of.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhSXfgGLOh7vg22bNp8tM96eRNX2ew6AM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196476038483-jua3ftdhqs4n68gp3ogbg9rd6nhkk1of.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

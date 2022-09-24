@@ -3,39 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:background="@color/color_1"
     android:paddingHorizontal="2pt"
     android:paddingVertical="5pt">
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/item_card"
-        android:layout_width="60dp"
-        android:layout_height="0dp"
-        app:cardBackgroundColor="@color/color_1"
-        app:cardCornerRadius="5dp"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/item_image"
+        android:layout_width="0pt"
+        android:layout_height="30pt"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/itemShapeStyle"
+        tools:src="@drawable/download" />
 
-        <ImageView
-            android:id="@+id/item_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/item_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/item_image"
+        tools:text="2022 • fiction, action, horror" />
 
     <TextView
         android:id="@+id/item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:gravity="center"
+        android:layout_marginBottom="2pt"
+        android:maxLines="1"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item_card"
-        tools:text="Наоми" />
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@id/item_subtitle"
+        app:layout_constraintStart_toEndOf="@id/item_image"
+        tools:text="Thor: Love and Thunder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

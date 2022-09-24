@@ -1,10 +1,7 @@
 package com.example.lesson54.core.presenter
 
 import com.example.lesson54.core.models.movieGenre.MovieGenreResponse
-import com.example.lesson54.core.models.nowPlaying.NowPlayingResult
-import com.example.lesson54.core.models.popular.PopularResult
-import com.example.lesson54.core.models.topRated.TopRatedResult
-import com.example.lesson54.core.models.upcoming.UpcomingResult
+import com.example.lesson54.core.models.movieType.Result
 
 interface HomePresenter {
     interface Presenter {
@@ -16,10 +13,15 @@ interface HomePresenter {
 
     interface View {
         fun dataState(isLoading: Boolean)
-        fun showData(popularData: ArrayList<PopularResult>)
-        fun showTopRatedData(topRatedData:ArrayList<TopRatedResult>)
-        fun showNowPlayingData(nowPlayingData:ArrayList<NowPlayingResult>)
-        fun showUpcoming(upcomingData:ArrayList<UpcomingResult>)
+        fun getData(data: ArrayList<Result>)
+        fun showError(message: String)
+    }
+
+    interface MainView {
+        fun getPopularMovieData(data: ArrayList<Result>)
+        fun getTopRatedMovieData(data: ArrayList<Result>)
+        fun getNowPlayingMovieData(data: ArrayList<Result>)
+        fun getUpcomingMovieData(data: ArrayList<Result>)
         fun showError(message: String)
         fun setGenres(g: MovieGenreResponse)
     }

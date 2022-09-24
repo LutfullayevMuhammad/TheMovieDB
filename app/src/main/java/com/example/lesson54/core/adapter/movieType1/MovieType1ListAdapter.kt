@@ -1,13 +1,13 @@
-package com.example.lesson54.core.adapter.search
+package com.example.lesson54.core.adapter.movieType1
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lesson54.core.models.movieType.Result
-import com.example.lesson54.databinding.ItemSearchBinding
+import com.example.lesson54.databinding.ItemMoviesBinding
 
-class SearchAdapter : RecyclerView.Adapter<SearchAdapterHolder>() {
+class MovieType1ListAdapter : RecyclerView.Adapter<MovieType1ListAdapterHolder>() {
 
     var data = ArrayList<Result>()
         @SuppressLint("NotifyDataSetChanged")
@@ -16,22 +16,18 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapterHolder>() {
             field.addAll(value)
             notifyDataSetChanged()
         }
-    var onScrollEnd: (() -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapterHolder =
-        SearchAdapterHolder(
-            ItemSearchBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieType1ListAdapterHolder =
+        MovieType1ListAdapterHolder(
+            ItemMoviesBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
 
-    override fun onBindViewHolder(holder: SearchAdapterHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieType1ListAdapterHolder, position: Int) {
         holder.bindData(data = data[position])
-        if (position == data.size - 1) {
-            onScrollEnd?.invoke()
-        }
     }
 
     override fun getItemCount(): Int = data.size
