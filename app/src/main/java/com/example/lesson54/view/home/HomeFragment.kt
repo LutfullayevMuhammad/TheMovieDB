@@ -102,7 +102,22 @@ class HomeFragment : BaseFragment(), HomePresenter.MainView {
             val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
             findNavController().navigate(action)
         }
-
+        binding.popularAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragment("popular")
+            findNavController().navigate(action)
+        }
+        binding.topRatedAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragment("top_rated")
+            findNavController().navigate(action)
+        }
+        binding.nowPlayingAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragment("now_playing")
+            findNavController().navigate(action)
+        }
+        binding.upcomingAllBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAllFragment("upcoming")
+            findNavController().navigate(action)
+        }
     }
 
     override fun onFragmentCreated() {
@@ -143,6 +158,5 @@ class HomeFragment : BaseFragment(), HomePresenter.MainView {
             MainActivity.GENRES_DATA.addAll(g.genres)
         }
     }
-
 
 }

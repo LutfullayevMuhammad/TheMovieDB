@@ -1,19 +1,18 @@
-package com.example.lesson54.core.adapter.movieType1
+package com.example.lesson54.core.adapter.allMovies
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.lesson54.core.models.movieType.Result
-import com.example.lesson54.databinding.ItemMoviesBinding
+import com.example.lesson54.databinding.ItemAllBinding
 import com.example.lesson54.view.activity.MainActivity
 
-class MovieType1ListAdapterHolder(val binding: ItemMoviesBinding) :
-    RecyclerView.ViewHolder(binding.root) {
+class AllMoviesAdapterHolder(val binding: ItemAllBinding) : RecyclerView.ViewHolder(binding.root) {
 
     @SuppressLint("SetTextI18n")
     fun bindData(data: Result) {
-        binding.itemImage.load("https://image.tmdb.org/t/p/w500" + data.posterPath)
-        binding.itemTitle.text = data.title
+        binding.allImage.load("https://image.tmdb.org/t/p/w500" + data.posterPath)
+        binding.allTitle.text = data.title
         val date: String = buildString {
             for (i in 0 until 4) {
                 append(data.releaseDate[i])
@@ -27,14 +26,12 @@ class MovieType1ListAdapterHolder(val binding: ItemMoviesBinding) :
                 }
             }
         }
-        if (binding.itemSubtitle.text == "") {
-            binding.itemSubtitle.text = "$date • " + buildString {
-                if (movieGenres.isNotEmpty()) {
-                    for (i in 0 until movieGenres.size - 1) {
-                        append("${movieGenres[i]}, ")
-                    }
-                    append(movieGenres[movieGenres.size - 1])
+        if (binding.allSubtitle.text == "") {
+            binding.allSubtitle.text = "$date • " + buildString {
+                for (i in 0 until movieGenres.size - 1) {
+                    append("${movieGenres[i]}, ")
                 }
+                append(movieGenres[movieGenres.size - 1])
             }
         }
     }

@@ -14,8 +14,12 @@ class SearchAdapterHolder(val binding: ItemSearchBinding) : RecyclerView.ViewHol
         binding.itemImage.load("https://image.tmdb.org/t/p/w500" + data.posterPath)
         binding.itemTitle.text = data.title
         val date: String = buildString {
-            for (i in 0 until 4) {
-                append(data.releaseDate[i])
+            if (!data.releaseDate.isNullOrBlank()) {
+                for (i in 0 until 4) {
+                    append(data.releaseDate[i])
+                }
+            } else {
+                append("unknown")
             }
         }
         val movieGenres = ArrayList<String>()
@@ -28,10 +32,12 @@ class SearchAdapterHolder(val binding: ItemSearchBinding) : RecyclerView.ViewHol
         }
         if (binding.itemSubtitle.text == "") {
             binding.itemSubtitle.text = "$date • " + buildString {
-                for (i in 0 until movieGenres.size - 1) {
-                    append("${movieGenres[i]}, ")
+                if (movieGenres.isNotEmpty()) {
+                    for (i in 0 until movieGenres.size - 1) {
+                        append("${movieGenres[i]}, ")
+                    }
+                    append(movieGenres[movieGenres.size - 1])
                 }
-                append(movieGenres[movieGenres.size - 1])
             }
         }
     }

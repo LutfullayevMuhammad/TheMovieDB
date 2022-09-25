@@ -21,7 +21,8 @@ interface MovieAPI {
     fun searchMovie(
         @Query("api_key") apiKey: String,
         @Query("language") lang: String,
-        @Query("query") movieType: String
+        @Query("query") movieType: String,
+        @Query("page") page: String
     ): Single<MovieTypeResponse>
 
     @GET("3/genre/movie/list?api_key=ae228a09fd0c71679dabcf913aea5d11&language=en-EN")

@@ -42,31 +42,39 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
             val DELAY: Long = 1000
             override fun afterTextChanged(p0: Editable?) {
                 timer.cancel()
-                timer = Timer()
-                timer.schedule(object : TimerTask() {
-                    override fun run() {
-                        pageNumber = 1
-                        presenter = SearchPresenterImp(
-                            this@SearchFragment,
-                            p0.toString(),
-                            pageNumber.toString()
-                        )
-                        presenter?.loadData()
-                        searchedText = p0.toString()
-                        pageNumber++
-                    }
-                }, DELAY)
+                if (p0.toString().isNotBlank()) {
+                    timer = Timer()
+                    timer.schedule(object : TimerTask() {
+                        override fun run() {
+                            pageNumber = 1
+                            presenter = SearchPresenterImp(
+                                this@SearchFragment,
+                                p0.toString(),
+                                pageNumber.toString()
+                            )
+                            presenter?.loadData()
+                            adapter.data.clear()
+                            searchedText = p0.toString()
+                            pageNumber++
+                        }
+                    }, DELAY)
+                }
             }
         })
         // loading actions
         adapter.onScrollEnd = {
-            presenter = SearchPresenterImp(
-                this@SearchFragment,
-                searchedText,
-                pageNumber.toString()
-            )
-            presenter?.loadData()
-            pageNumber++
+            if (searchedText.isNotBlank()) {
+                presenter = SearchPresenterImp(
+                    this@SearchFragment,
+                    searchedText,
+                    pageNumber.toString()
+                )
+                presenter?.loadData()
+                pageNumber++
+            }
+        }
+        binding.back.setOnClickListener {
+            requireActivity().onBackPressed()
         }
     }
 
@@ -79,7 +87,7 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
     override fun dataState(isLoading: Boolean) {}
 
     override fun getData(data: ArrayList<Result>) {
-
+        adapter.data = data
     }
 
     override fun showError(message: String) {

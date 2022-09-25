@@ -10,6 +10,8 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
+import kotlin.system.measureTimeMillis
 
 class MainPresenterImp(
     private val view: HomePresenter.MainView
@@ -26,6 +28,8 @@ class MainPresenterImp(
     }
 
     private fun popularMovieRequest() {
+        Thread.sleep(2000)
+
         val call = MovieAPIClient.movieAPI()
         compositeDisposable.add(
             call.movieTypeDataCall(

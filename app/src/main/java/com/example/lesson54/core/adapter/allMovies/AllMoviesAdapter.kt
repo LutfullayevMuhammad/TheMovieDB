@@ -1,13 +1,13 @@
-package com.example.lesson54.core.adapter.search
+package com.example.lesson54.core.adapter.allMovies
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lesson54.core.models.movieType.Result
-import com.example.lesson54.databinding.ItemSearchBinding
+import com.example.lesson54.databinding.ItemAllBinding
+import com.example.lesson54.databinding.ItemMoviesBinding
 
-class SearchAdapter : RecyclerView.Adapter<SearchAdapterHolder>() {
+class AllMoviesAdapter : RecyclerView.Adapter<AllMoviesAdapterHolder>() {
 
     var data = ArrayList<Result>()
         set(value) {
@@ -16,16 +16,16 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapterHolder>() {
         }
     var onScrollEnd: (() -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapterHolder =
-        SearchAdapterHolder(
-            ItemSearchBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllMoviesAdapterHolder =
+        AllMoviesAdapterHolder(
+            ItemAllBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
 
-    override fun onBindViewHolder(holder: SearchAdapterHolder, position: Int) {
+    override fun onBindViewHolder(holder: AllMoviesAdapterHolder, position: Int) {
         holder.bindData(data = data[position])
         if (position == data.size - 1) {
             onScrollEnd?.invoke()

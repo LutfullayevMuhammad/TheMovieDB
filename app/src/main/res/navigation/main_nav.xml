@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allFragment"
+            app:destination="@id/allFragment" />
     </fragment>
 
     <fragment
@@ -20,5 +23,14 @@
         android:name="com.example.lesson54.view.search.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/allFragment"
+        android:name="com.example.lesson54.view.all.AllFragment"
+        android:label="fragment_all"
+        tools:layout="@layout/fragment_all" >
+        <argument
+            android:name="movieType"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
