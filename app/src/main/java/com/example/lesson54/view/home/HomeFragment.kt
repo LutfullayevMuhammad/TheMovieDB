@@ -133,6 +133,9 @@ class HomeFragment : BaseFragment(), HomePresenter.MainView {
         presenter?.cancel()
     }
 
+    override fun dataState(isLoading: Boolean) {
+    }
+
     override fun getPopularMovieData(data: ArrayList<Result>) {
         popularListAdapter.data = data
     }

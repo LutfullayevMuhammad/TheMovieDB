@@ -16,13 +16,20 @@
         <action
             android:id="@+id/action_homeFragment_to_allFragment"
             app:destination="@id/allFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_movieFragment"
+            app:destination="@id/movieFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.lesson54.view.search.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_movieFragment"
+            app:destination="@id/movieFragment" />
+    </fragment>
     <fragment
         android:id="@+id/allFragment"
         android:name="com.example.lesson54.view.all.AllFragment"
@@ -31,6 +38,14 @@
         <argument
             android:name="movieType"
             app:argType="string" />
+        <action
+            android:id="@+id/action_allFragment_to_movieFragment"
+            app:destination="@id/movieFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.example.lesson54.view.movie.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie" />
 
 </navigation>

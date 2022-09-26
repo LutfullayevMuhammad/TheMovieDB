@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "196476038483",
-    "project_id": "cinemaplay-dc307",
-    "storage_bucket": "cinemaplay-dc307.appspot.com"
+    "project_number": "1011498847777",
+    "project_id": "cinemaplay-9bbfd",
+    "storage_bucket": "cinemaplay-9bbfd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:196476038483:android:b39baafb73c846452a05a6",
+        "mobilesdk_app_id": "1:1011498847777:android:4a3ed0aa89c16a2202dd60",
         "android_client_info": {
           "package_name": "com.example.lesson54"
         }
       },
       "oauth_client": [
         {
-          "client_id": "196476038483-jua3ftdhqs4n68gp3ogbg9rd6nhkk1of.apps.googleusercontent.com",
+          "client_id": "1011498847777-o6tiihgss1q47asf33dh5434h1u6k5tu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBhSXfgGLOh7vg22bNp8tM96eRNX2ew6AM"
+          "current_key": "AIzaSyAgRhOOGfncfBps2mxVZ54Pez5QL1EcW9I"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "196476038483-jua3ftdhqs4n68gp3ogbg9rd6nhkk1of.apps.googleusercontent.com",
+              "client_id": "1011498847777-o6tiihgss1q47asf33dh5434h1u6k5tu.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

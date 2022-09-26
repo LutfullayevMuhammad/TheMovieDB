@@ -62,7 +62,8 @@ class AllFragment : BaseFragment(), HomePresenter.View {
         presenter?.cancel()
     }
 
-    override fun dataState(isLoading: Boolean) {}
+    override fun dataState(isLoading: Boolean) {
+    }
 
     override fun getData(data: ArrayList<Result>) {
         adapter.data = data

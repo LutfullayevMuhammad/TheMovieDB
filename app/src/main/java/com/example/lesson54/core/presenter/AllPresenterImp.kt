@@ -46,7 +46,9 @@ class AllPresenterImp(
         loadData()
     }
 
-    override fun loadGenres() {}
+    override fun loadGenres() {
+
+    }
 
     override fun cancel() {
         compositeDisposable.dispose()

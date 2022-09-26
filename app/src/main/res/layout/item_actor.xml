@@ -2,26 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_width="120dp"
+    android:layout_height="220dp"
     android:background="@color/color_1"
     android:paddingHorizontal="2pt"
-    android:paddingVertical="3pt">
+    android:paddingVertical="5pt">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/all_image"
+    <ImageView
+        android:id="@+id/item_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@id/all_title"
+        android:padding="1"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/item_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/itemShapeStyle"
         tools:src="@drawable/download" />
 
     <TextView
-        android:id="@+id/all_title"
+        android:id="@+id/item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="2pt"
@@ -30,24 +31,24 @@
         android:textColor="@color/white"
         android:textSize="11sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/all_subtitle"
+        app:layout_constraintBottom_toTopOf="@id/item_character"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/all_image"
+        app:layout_constraintTop_toBottomOf="@id/item_image"
         tools:text="Наоми" />
 
     <TextView
-        android:id="@+id/all_subtitle"
+        android:id="@+id/item_character"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start"
+        android:gravity="center"
         android:maxLines="1"
-        android:textColor="@color/white"
+        android:textColor="#AAAAAA"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/all_title"
+        app:layout_constraintTop_toBottomOf="@id/item_name"
         tools:text="Наоми" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,11 +66,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0pt"
                 android:layout_marginStart="5pt"
-                android:layout_marginEnd="10dp"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:text="| See all >"
                 android:textColor="@color/color_2"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="@id/popular_text"
                 app:layout_constraintStart_toEndOf="@id/popular_text"
                 app:layout_constraintTop_toTopOf="@id/popular_text" />
@@ -82,13 +81,6 @@
                 app:layout_constraintBottom_toTopOf="@id/top_rated_text"
                 app:layout_constraintTop_toBottomOf="@id/popular_text">
 
-                <ImageView
-                    android:id="@+id/popular_list_background"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    tools:src="@drawable/download" />
-
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/popular_movies"
                     android:layout_width="match_parent"
@@ -96,7 +88,15 @@
                     android:background="#E631363E"
                     android:paddingHorizontal="10pt"
                     android:paddingVertical="6pt"
-                    android:scrollbars="horizontal" />
+                    android:scrollbars="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/popular_list_background"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:src="@drawable/download" />
+                </androidx.viewpager2.widget.ViewPager2>
 
             </FrameLayout>
 
@@ -119,11 +119,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0pt"
                 android:layout_marginStart="5pt"
-                android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:text="| See all >"
                 android:textColor="@color/color_2"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="@id/top_rated_text"
                 app:layout_constraintStart_toEndOf="@id/top_rated_text"
                 app:layout_constraintTop_toTopOf="@id/top_rated_text" />
@@ -131,7 +130,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/top_rated_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="220dp"
                 app:layout_constraintBottom_toTopOf="@id/now_playing_text"
                 app:layout_constraintTop_toBottomOf="@id/top_rated_text" />
 
@@ -158,7 +157,7 @@
                 android:gravity="center"
                 android:text="| See all >"
                 android:textColor="@color/color_2"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="@id/now_playing_text"
                 app:layout_constraintStart_toEndOf="@id/now_playing_text"
                 app:layout_constraintTop_toTopOf="@id/now_playing_text" />
@@ -166,7 +165,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/now_playing_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="220dp"
                 app:layout_constraintBottom_toTopOf="@id/upcoming_text"
                 app:layout_constraintTop_toBottomOf="@id/now_playing_text" />
 
@@ -189,12 +188,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0pt"
                 android:layout_marginStart="5pt"
-                android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:text="| See all >"
                 android:textColor="@color/color_2"
-                android:textSize="15sp"
-                android:textStyle="bold"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="@id/upcoming_text"
                 app:layout_constraintStart_toEndOf="@id/upcoming_text"
                 app:layout_constraintTop_toTopOf="@id/upcoming_text" />
@@ -202,7 +199,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/upcoming_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="220dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/upcoming_text" />
 
