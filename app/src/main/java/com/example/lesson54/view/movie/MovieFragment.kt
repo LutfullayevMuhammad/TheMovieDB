@@ -66,6 +66,11 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter?.destroy()
+    }
+
     override fun onFragmentClosed() {
         presenter?.cancel()
     }

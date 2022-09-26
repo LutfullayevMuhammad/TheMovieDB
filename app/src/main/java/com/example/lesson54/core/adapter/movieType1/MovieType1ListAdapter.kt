@@ -36,6 +36,6 @@ class MovieType1ListAdapter : RecyclerView.Adapter<MovieType1ListAdapterHolder>(
         }
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = if ( data.size>6) 6 else  data.size
 
 }

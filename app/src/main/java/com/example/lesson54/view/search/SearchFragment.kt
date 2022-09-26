@@ -23,7 +23,6 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
     private lateinit var binding: FragmentSearchBinding
     private val adapter = SearchAdapter()
     private var presenter: HomePresenter.Presenter? = null
-    private var pageNumber = 1
     private var searchedText = ""
 
     override fun getLayout(inflater: LayoutInflater, container: ViewGroup?): View {
@@ -32,6 +31,8 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
     }
 
     override fun onFragmentReady() {
+        presenter = SearchPresenterImp(this@SearchFragment,)
+
         // preparing list
         binding.searchingList.adapter = adapter
         binding.searchingList.layoutManager =
@@ -40,43 +41,19 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
         binding.searchView.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            var timer = Timer()
-            val DELAY: Long = 1000
             override fun afterTextChanged(p0: Editable?) {
-                timer.cancel()
-                if (p0.toString().isNotBlank()) {
-                    timer = Timer()
-                    timer.schedule(object : TimerTask() {
-                        override fun run() {
-                            pageNumber = 1
-                            presenter = SearchPresenterImp(
-                                this@SearchFragment,
-                                p0.toString(),
-                                pageNumber.toString()
-                            )
-                            presenter?.loadData()
-                            adapter.data.clear()
-                            searchedText = p0.toString()
-                            pageNumber++
-                        }
-                    }, DELAY)
-                }
+                presenter?.searchData(p0.toString())
+                searchedText = p0.toString()
             }
         })
         // loading actions
         adapter.onScrollEnd = {
             if (searchedText.isNotBlank()) {
-                presenter = SearchPresenterImp(
-                    this@SearchFragment,
-                    searchedText,
-                    pageNumber.toString()
-                )
-                presenter?.loadData()
-                pageNumber++
+                presenter?.loadNextData(searchedText)
             }
         }
         binding.back.setOnClickListener {
-            requireActivity().onBackPressed()
+            findNavController().popBackStack()
         }
 
         adapter.onItemClicka = {
@@ -96,6 +73,10 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
 
     override fun getData(data: ArrayList<Result>) {
         adapter.data = data
+    }
+
+    override fun setNextData(data: ArrayList<Result>) {
+        adapter.addData(data)
     }
 
     override fun showError(message: String) {

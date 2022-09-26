@@ -42,6 +42,15 @@ class AllPresenterImp(
         )
     }
 
+    override fun searchData(text: String) {
+
+    }
+
+    override fun loadNextData(text: String) {
+
+    }
+
+
     override fun refreshData() {
         loadData()
     }
@@ -51,6 +60,12 @@ class AllPresenterImp(
     }
 
     override fun cancel() {
-        compositeDisposable.dispose()
+        if (!compositeDisposable.isDisposed) {
+            compositeDisposable.dispose()
+        }
+    }
+
+    override fun destroy() {
+        compositeDisposable.clear()
     }
 }

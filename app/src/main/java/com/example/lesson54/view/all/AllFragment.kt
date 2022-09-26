@@ -30,6 +30,8 @@ class AllFragment : BaseFragment(), HomePresenter.View {
         return binding.root
     }
 
+
+
     @SuppressLint("SetTextI18n")
     override fun onFragmentReady() {
         // preparing list
@@ -75,6 +77,10 @@ class AllFragment : BaseFragment(), HomePresenter.View {
 
     override fun getData(data: ArrayList<Result>) {
         adapter.data = data
+    }
+
+    override fun setNextData(data: ArrayList<Result>) {
+
     }
 
     override fun showError(message: String) {

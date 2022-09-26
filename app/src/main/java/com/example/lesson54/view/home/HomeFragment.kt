@@ -38,6 +38,12 @@ class HomeFragment : BaseFragment(), HomePresenter.MainView {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+//        presenter?.loadGenres()
+//        presenter?.loadData()
+    }
+
     override fun onFragmentReady() {
         // preparing view-pager
         binding.popularMovies.adapter = popularListAdapter
@@ -71,31 +77,10 @@ class HomeFragment : BaseFragment(), HomePresenter.MainView {
                 binding.popularMovies.setCurrentItem(scrollPosition++, true)
             }
         }
-        binding.popularMovies.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                binding.popularListBackground.load("https://image.tmdb.org/t/p/w500" + popularListAdapter.data[position].backdropPath)
-                scrollPosition = binding.popularMovies.currentItem
-            }
 
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
+        binding.popularMovies.registerOnPageChangeCallback(pagerListener)
 
-                if (state == ViewPager2.SCROLL_STATE_IDLE) {
-                    when (binding.popularMovies.currentItem) {
-                        popularListAdapter.data.size - 1 -> binding.popularMovies.setCurrentItem(
-                            0,
-                            false
-                        )
-                        0 -> binding.popularMovies.setCurrentItem(
-                            popularListAdapter.data.size - 1,
-                            false
-                        )
-                    }
-                }
-            }
-        })
+
         // navigate to movieFragment
         popularListAdapter.onItemClick = {
             val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment(it.id.toString())
@@ -148,6 +133,12 @@ class HomeFragment : BaseFragment(), HomePresenter.MainView {
 
     override fun onFragmentClosed() {
         presenter?.cancel()
+        binding.popularMovies.unregisterOnPageChangeCallback(pagerListener)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter?.destroy()
     }
 
     override fun dataState(isLoading: Boolean) {
@@ -176,6 +167,32 @@ class HomeFragment : BaseFragment(), HomePresenter.MainView {
     override fun setGenres(g: MovieGenreResponse) {
         if (MainActivity.GENRES_DATA.size == 0) {
             MainActivity.GENRES_DATA.addAll(g.genres)
+        }
+    }
+
+    val pagerListener=object :
+        ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            super.onPageSelected(position)
+//                binding.popularListBackground.load("https://image.tmdb.org/t/p/w500" + popularListAdapter.data[position].backdropPath)
+            scrollPosition = binding.popularMovies.currentItem
+        }
+
+        override fun onPageScrollStateChanged(state: Int) {
+            super.onPageScrollStateChanged(state)
+
+            if (state == ViewPager2.SCROLL_STATE_IDLE) {
+                when (binding.popularMovies.currentItem) {
+                    popularListAdapter.data.size - 1 -> binding.popularMovies.setCurrentItem(
+                        0,
+                        false
+                    )
+                    0 -> binding.popularMovies.setCurrentItem(
+                        popularListAdapter.data.size - 1,
+                        false
+                    )
+                }
+            }
         }
     }
 
