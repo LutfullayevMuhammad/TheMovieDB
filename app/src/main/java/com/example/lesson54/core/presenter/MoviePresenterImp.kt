@@ -2,10 +2,13 @@ package com.example.lesson54.core.presenter
 
 import com.example.lesson54.core.models.movie.MovieResponse
 import com.example.lesson54.core.models.movie.ProductionCountry
+import com.example.lesson54.core.models.movieActors.Cast
 import com.example.lesson54.core.models.movieActors.MovieActorsResponse
 import com.example.lesson54.core.models.movieGenre.MovieGenreResponse
 import com.example.lesson54.core.models.movieTrailers.MovieTrailersResponse
+import com.example.lesson54.core.models.movieTrailers.TrailersResult
 import com.example.lesson54.core.models.similarMovies.MovieSimilarResponse
+import com.example.lesson54.core.models.similarMovies.SimilarResult
 import com.example.lesson54.core.network.MovieAPIClient
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.SingleObserver
@@ -41,9 +44,11 @@ class MoviePresenterImp(
                     DisposableSingleObserver<MovieResponse>() {
                     override fun onSuccess(t: MovieResponse) {
                         view.dataState(false)
+                        view.getMovie(t)
                     }
 
                     override fun onError(e: Throwable) {
+                        view.dataState(false)
                         view.showError(message = "On loading Movies ${e.message} occurred")
                     }
                 })
@@ -63,9 +68,11 @@ class MoviePresenterImp(
                     DisposableSingleObserver<MovieActorsResponse>() {
                     override fun onSuccess(t: MovieActorsResponse) {
                         view.dataState(false)
+                        view.getMovieActor(t.cast as ArrayList<Cast>)
                     }
 
                     override fun onError(e: Throwable) {
+                        view.dataState(false)
                         view.showError(message = "On loading Movie Actors ${e.message} occurred")
                     }
                 })
@@ -86,9 +93,11 @@ class MoviePresenterImp(
                     DisposableSingleObserver<MovieTrailersResponse>() {
                     override fun onSuccess(t: MovieTrailersResponse) {
                         view.dataState(false)
+                        view.getMovieTrailers(t.results as ArrayList<TrailersResult>)
                     }
 
                     override fun onError(e: Throwable) {
+                        view.dataState(false)
                         view.showError(message = "On loading Movie Trailers ${e.message} occurred")
                     }
                 })
@@ -102,12 +111,13 @@ class MoviePresenterImp(
                 movieId = movieId,
                 apiKey = "ae228a09fd0c71679dabcf913aea5d11",
                 lang = "en-EN",
-                )
+            )
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<MovieSimilarResponse>() {
                     override fun onSuccess(t: MovieSimilarResponse) {
                         view.dataState(false)
+                        view.getSimilarMovies(t.results as ArrayList<SimilarResult>)
                     }
 
                     override fun onError(e: Throwable) {
@@ -122,22 +132,7 @@ class MoviePresenterImp(
         loadGenres()
     }
 
-    override fun loadGenres() {
-        MovieAPIClient.movieAPI().genres()
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<MovieGenreResponse> {
-                override fun onSubscribe(d: Disposable) {}
-
-                override fun onSuccess(t: MovieGenreResponse) {
-                    view.setGenres(t)
-                }
-
-                override fun onError(e: Throwable) {
-                    view.showError("On loading genres ${e.message} occurred")
-                }
-            })
-    }
+    override fun loadGenres() {}
 
     override fun cancel() {
         compositeDisposable.dispose()

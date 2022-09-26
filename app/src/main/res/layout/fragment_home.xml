@@ -95,17 +95,7 @@
                     android:layout_height="match_parent"
                     android:paddingHorizontal="10pt"
                     android:paddingVertical="6pt"
-                    android:scrollbars="horizontal">
-
-                    <ImageView
-                        android:id="@+id/popular_list_background"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        tools:src="@drawable/download" />
-
-                </androidx.viewpager2.widget.ViewPager2>
-
+                    android:scrollbars="horizontal" />
 
 
             </FrameLayout>

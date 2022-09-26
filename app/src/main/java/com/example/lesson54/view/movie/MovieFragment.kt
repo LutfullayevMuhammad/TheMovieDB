@@ -12,17 +12,13 @@ import com.example.lesson54.R
 import com.example.lesson54.core.adapter.movie.actor.ActorMoviesAdapter
 import com.example.lesson54.core.adapter.movie.similar.SimilarMoviesAdapter
 import com.example.lesson54.core.adapter.movie.trailers.TrailersMoviesAdapter
-import com.example.lesson54.core.models.movie.MovieGenre
 import com.example.lesson54.core.models.movie.MovieResponse
-import com.example.lesson54.core.models.movie.ProductionCountry
 import com.example.lesson54.core.models.movieActors.Cast
-import com.example.lesson54.core.models.movieGenre.MovieGenreResponse
 import com.example.lesson54.core.models.movieTrailers.TrailersResult
 import com.example.lesson54.core.models.similarMovies.SimilarResult
 import com.example.lesson54.core.presenter.HomePresenter
 import com.example.lesson54.core.presenter.MoviePresenterImp
 import com.example.lesson54.databinding.FragmentMovieBinding
-import com.example.lesson54.view.activity.MainActivity
 import com.example.lesson54.view.base.BaseFragment
 
 class MovieFragment : BaseFragment(), HomePresenter.MovieView {
@@ -32,7 +28,6 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
     private val similarMoviesAdapter = SimilarMoviesAdapter()
     private val trailersMoviesAdapter = TrailersMoviesAdapter()
     private var presenter: HomePresenter.Presenter? = null
-    private lateinit var movieResponse: MovieResponse
     private val args: MovieFragmentArgs by navArgs()
 
     override fun getLayout(inflater: LayoutInflater, container: ViewGroup?): View {
@@ -53,7 +48,6 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         // loading data
         presenter = MoviePresenterImp(this, args.movieId)
-        presenter?.loadGenres()
         presenter?.loadData()
 
     }
@@ -71,12 +65,7 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
     }
 
     @SuppressLint("SetTextI18n")
-    override fun getMovie(
-        data: MovieResponse,
-        productionCountry: ProductionCountry,
-        movieGenre: MovieGenre
-    ) {
-
+    override fun getMovie(data: MovieResponse) {
         //Title
         binding.title.text = data.title
 
@@ -89,23 +78,18 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
                 append(data.releaseDate[i])
             }
         }
-//        val movieGenres = ArrayList<String>()
-//        MainActivity.GENRES_DATA.forEach {
-//            if (movieGenre.id == it.id) {
-//                movieGenres.add(it.name)
-//            }
-//        }
+
         if (binding.genre.text == "") {
             binding.genre.text = "$date • " + buildString {
                 for (i in 0 until data.productionCountries.size - 1) {
-                    append("${productionCountry.iso31661[i]}, ")
+                    append("${data.productionCountries[0].iso31661}, ")
                 }
-                append(data.productionCountries[data.productionCountries.size - 1])
+                append(data.productionCountries[data.productionCountries.size - 1].iso31661)
             } + buildString {
                 for (i in 0 until data.genres.size - 1) {
-                    append("${movieGenre.name[i]}, ")
+                    append("${data.genres[0].name}, ")
                 }
-                append(data.genres[data.genres.size - 1])
+                append(data.genres[data.genres.size - 1].name)
             }
         }
 
@@ -157,12 +141,6 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
 
     override fun showError(message: String) {
         Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun setGenres(g: MovieGenreResponse) {
-        if (MainActivity.GENRES_DATA.size == 0) {
-            MainActivity.GENRES_DATA.addAll(g.genres)
-        }
     }
 
 }

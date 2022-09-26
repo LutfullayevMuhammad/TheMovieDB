@@ -17,7 +17,7 @@ class MovieType1ListAdapter : RecyclerView.Adapter<MovieType1ListAdapterHolder>(
             notifyDataSetChanged()
         }
 
-    var onItemClicka: ((result: Result) -> Unit)? = null
+    var onItemClicked: ((result: Result) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieType1ListAdapterHolder =
         MovieType1ListAdapterHolder(
@@ -32,7 +32,7 @@ class MovieType1ListAdapter : RecyclerView.Adapter<MovieType1ListAdapterHolder>(
         holder.bindData(data = data[position])
 
         holder.binding.root.setOnClickListener {
-            onItemClicka?.invoke(data[position])
+            onItemClicked?.invoke(data[position])
         }
     }
 

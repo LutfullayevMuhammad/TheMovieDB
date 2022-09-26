@@ -33,14 +33,13 @@ interface HomePresenter {
         fun setGenres(g: MovieGenreResponse)
     }
 
-    interface MovieView{
+    interface MovieView {
         fun dataState(isLoading: Boolean)
-        fun getMovie(data:MovieResponse,productionCountry: ProductionCountry,movieGenre: MovieGenre)
-        fun getMovieActor(data:ArrayList<Cast>)
-        fun getMovieTrailers(data:ArrayList<TrailersResult>)
-        fun getSimilarMovies(data:ArrayList<SimilarResult>)
+        fun getMovie(data: MovieResponse)
+        fun getMovieActor(data: ArrayList<Cast>)
+        fun getMovieTrailers(data: ArrayList<TrailersResult>)
+        fun getSimilarMovies(data: ArrayList<SimilarResult>)
         fun showError(message: String)
-        fun setGenres(g: MovieGenreResponse)
     }
 
 }

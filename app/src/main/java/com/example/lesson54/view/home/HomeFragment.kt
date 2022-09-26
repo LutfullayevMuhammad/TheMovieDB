@@ -96,28 +96,29 @@ class HomeFragment : BaseFragment(), HomePresenter.MainView {
                 }
             }
         })
-
-        nowPlayingListAdapter.onItemClicka = {
-            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment("${it.id}")
-            findNavController().navigate(action)
-        }
-        topRatedListAdapter.onItemClicka = {
-            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment("${it.id}")
-            findNavController().navigate(action)
-        }
+        // navigate to movieFragment
         popularListAdapter.onItemClick = {
-            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment("${it.id}")
+            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment(it.id.toString())
             findNavController().navigate(action)
         }
-        upcomingListAdapter.onItemClicka = {
-            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment("${it.id}")
+        topRatedListAdapter.onItemClicked = {
+            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment(it.id.toString())
             findNavController().navigate(action)
         }
-
+        nowPlayingListAdapter.onItemClicked = {
+            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment(it.id.toString())
+            findNavController().navigate(action)
+        }
+        upcomingListAdapter.onItemClicked = {
+            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment(it.id.toString())
+            findNavController().navigate(action)
+        }
+        // navigate to searchFragment
         binding.searchHome.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
             findNavController().navigate(action)
         }
+        // navigate to allFragment
         binding.popularAllBtn.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToAllFragment("popular")
             findNavController().navigate(action)
