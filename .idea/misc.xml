@@ -5,35 +5,44 @@
       <map>
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/all_button.xml" value="0.1165" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/menu_icon.xml" value="0.1165" />
-        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/play_trailers_icon.xml" value="0.119" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/rate_1_back.xml" value="0.1165" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/rate_2_back.xml" value="0.1165" />
-        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/rating_background.xml" value="0.1265" />
-        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/search_background.xml" value="0.12" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/drawable/search_icon.xml" value="0.1165" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/fragment_all.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
-        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/fragment_movie.xml" value="0.2" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/fragment_search.xml" value="0.22826086956521738" />
-        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_actor.xml" value="0.23505434782608695" />
-        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_all.xml" value="0.2" />
+        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_all.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_card.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_collection.xml" value="0.2" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_movies.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_now_playing.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_search.xml" value="0.24728260869565216" />
-        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/item_trailers.xml" value="0.2" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/main_item.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/now_playing_movies_item.xml" value="0.22826086956521738" />
-        <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/popular_movies_item.xml" value="0.25" />
         <entry key="..\:/AndroidLesson/Lesson54/app/src/main/res/layout/top_rated_movies_item.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidLesson/lesson54/app/src/main/res/layout/fragment_all.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidLesson/lesson54/app/src/main/res/layout/fragment_movie.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidLesson/lesson54/app/src/main/res/layout/fragment_search.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidLesson/lesson54/app/src/main/res/layout/item_actor.xml" value="0.12158054711246201" />
+        <entry key="..\:/AndroidLesson/lesson54/app/src/main/res/layout/item_movies.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/drawable/back_icon.xml" value="0.2065" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/drawable/menu_icon.xml" value="0.155" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/drawable/rate_1_back.xml" value="0.155" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/drawable/search_background.xml" value="0.155" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/drawable/search_icon.xml" value="0.155" />
         <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/fragment_all.xml" value="0.19895833333333332" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/fragment_search.xml" value="0.33" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/item_all.xml" value="0.19895833333333332" />
-        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/item_search.xml" value="0.16983695652173914" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/fragment_all.xml" value="0.33" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/fragment_home.xml" value="0.2986708365910868" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/fragment_search.xml" value="0.22" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/item_all.xml" value="0.6014814814814815" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/item_movies.xml" value="0.25" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/item_now_playing.xml" value="0.5" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/item_search.xml" value="0.33" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/main_item.xml" value="0.67" />
         <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/now_playing_movies_item.xml" value="0.19895833333333332" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/popular_movies_item.xml" value="0.19895833333333332" />
+        <entry key="..\:/Android_projects/lesson54/app/src/main/res/layout/top_rated_movies_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.22056159420289856" />
