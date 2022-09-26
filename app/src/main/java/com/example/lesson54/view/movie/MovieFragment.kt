@@ -1,10 +1,13 @@
 package com.example.lesson54.view.movie
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
@@ -20,6 +23,7 @@ import com.example.lesson54.core.presenter.HomePresenter
 import com.example.lesson54.core.presenter.MoviePresenterImp
 import com.example.lesson54.databinding.FragmentMovieBinding
 import com.example.lesson54.view.base.BaseFragment
+import com.example.lesson54.view.home.HomeFragmentDirections
 
 class MovieFragment : BaseFragment(), HomePresenter.MovieView {
 
@@ -49,6 +53,12 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
         // loading data
         presenter = MoviePresenterImp(this, args.movieId)
         presenter?.loadData()
+
+        binding.back.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+
 
     }
 
@@ -87,7 +97,7 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
                 append(data.productionCountries[data.productionCountries.size - 1].iso31661)
             } + buildString {
                 for (i in 0 until data.genres.size - 1) {
-                    append("${data.genres[0].name}, ")
+                    append(","+"${data.genres[0].name}, ")
                 }
                 append(data.genres[data.genres.size - 1].name)
             }
@@ -125,17 +135,30 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
         //Description
         binding.description.text = data.overview
 
+
+
     }
 
     override fun getMovieActor(data: ArrayList<Cast>) {
         actorMoviesAdapter.data = data
     }
 
+    lateinit var trailersData: TrailersResult
+
     override fun getMovieTrailers(data: ArrayList<TrailersResult>) {
+        trailersMoviesAdapter.onItemClick =  {
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=${it.key}"))
+
+            startActivity(intent)
+        }
         trailersMoviesAdapter.data = data
     }
 
     override fun getSimilarMovies(data: ArrayList<Result>) {
+        similarMoviesAdapter.onItemClick = {
+            val action = MovieFragmentDirections.actionMovieFragmentSelf(it.id.toString())
+            findNavController().navigate(action)
+        }
         similarMoviesAdapter.data = data
     }
 

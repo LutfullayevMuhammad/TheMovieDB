@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.lesson54.core.models.movieTrailers.TrailersResult
-import com.example.lesson54.core.models.similarMovies.SimilarResult
 import com.example.lesson54.databinding.ItemMoviesBinding
 import com.example.lesson54.databinding.ItemTrailersBinding
 import com.example.lesson54.view.activity.MainActivity

@@ -16,9 +16,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/back"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true"
             android:src="@drawable/back_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"

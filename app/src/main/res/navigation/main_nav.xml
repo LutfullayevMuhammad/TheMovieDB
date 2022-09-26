@@ -50,6 +50,9 @@
         <argument
             android:name="movieId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_movieFragment_self"
+            app:destination="@id/movieFragment" />
     </fragment>
 
 </navigation>

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lesson54.core.models.movieTrailers.TrailersResult
-import com.example.lesson54.core.models.similarMovies.SimilarResult
+import com.example.lesson54.core.models.movieType.Result
 import com.example.lesson54.databinding.ItemMoviesBinding
 import com.example.lesson54.databinding.ItemTrailersBinding
 
@@ -17,6 +17,8 @@ class TrailersMoviesAdapter : RecyclerView.Adapter<TrailersMoviesAdapterHolder>(
             field.addAll(value)
             notifyDataSetChanged()
         }
+
+    var onItemClick: ((result: TrailersResult) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrailersMoviesAdapterHolder =
         TrailersMoviesAdapterHolder(
@@ -30,6 +32,9 @@ class TrailersMoviesAdapter : RecyclerView.Adapter<TrailersMoviesAdapterHolder>(
 
     override fun onBindViewHolder(holder: TrailersMoviesAdapterHolder, position: Int) {
         holder.bindData(data[position])
+        holder.binding.root.setOnClickListener {
+            onItemClick?.invoke(data[position])
+        }
     }
 
     override fun getItemCount(): Int {

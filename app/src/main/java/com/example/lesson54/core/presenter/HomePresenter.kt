@@ -7,7 +7,6 @@ import com.example.lesson54.core.models.movieActors.Cast
 import com.example.lesson54.core.models.movieGenre.MovieGenreResponse
 import com.example.lesson54.core.models.movieTrailers.TrailersResult
 import com.example.lesson54.core.models.movieType.Result
-import com.example.lesson54.core.models.similarMovies.SimilarResult
 
 interface HomePresenter {
     interface Presenter {
@@ -38,7 +37,7 @@ interface HomePresenter {
         fun getMovie(data: MovieResponse)
         fun getMovieActor(data: ArrayList<Cast>)
         fun getMovieTrailers(data: ArrayList<TrailersResult>)
-        fun getSimilarMovies(data: ArrayList<SimilarResult>)
+        fun getSimilarMovies(data: ArrayList<Result>)
         fun showError(message: String)
     }
 
