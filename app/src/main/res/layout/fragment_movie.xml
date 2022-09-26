@@ -110,10 +110,11 @@
                 android:gravity="center"
                 android:textColor="#fff"
                 android:textSize="17sp"
+                android:textAllCaps="true"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/rating"
                 app:layout_constraintTop_toBottomOf="@id/genre"
-                tools:text="EN" />
+                tools:text="en" />
 
             <!--Status-->
             <TextView
@@ -195,7 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Original title"
+                android:text="Overview"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"

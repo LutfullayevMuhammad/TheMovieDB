@@ -1,6 +1,8 @@
 package com.example.lesson54.core.presenter
 
+import com.example.lesson54.core.models.movie.MovieGenre
 import com.example.lesson54.core.models.movie.MovieResponse
+import com.example.lesson54.core.models.movie.ProductionCountry
 import com.example.lesson54.core.models.movieActors.Cast
 import com.example.lesson54.core.models.movieGenre.MovieGenreResponse
 import com.example.lesson54.core.models.movieTrailers.TrailersResult
@@ -33,7 +35,7 @@ interface HomePresenter {
 
     interface MovieView{
         fun dataState(isLoading: Boolean)
-        fun getMovie(data:ArrayList<MovieResponse>)
+        fun getMovie(data:MovieResponse,productionCountry: ProductionCountry,movieGenre: MovieGenre)
         fun getMovieActor(data:ArrayList<Cast>)
         fun getMovieTrailers(data:ArrayList<TrailersResult>)
         fun getSimilarMovies(data:ArrayList<SimilarResult>)

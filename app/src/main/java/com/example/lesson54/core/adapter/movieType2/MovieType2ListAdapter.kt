@@ -17,6 +17,8 @@ class MovieType2ListAdapter : RecyclerView.Adapter<MovieType2ListAdapterHolder>(
             notifyDataSetChanged()
         }
 
+    var onItemClick: ((result: Result) -> Unit)? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -26,6 +28,10 @@ class MovieType2ListAdapter : RecyclerView.Adapter<MovieType2ListAdapterHolder>(
 
     override fun onBindViewHolder(holder: MovieType2ListAdapterHolder, position: Int) {
         holder.bindData(data = data[position])
+
+        holder.binding.root.setOnClickListener {
+            onItemClick?.invoke(data[position])
+        }
     }
 
     override fun getItemCount(): Int = data.size

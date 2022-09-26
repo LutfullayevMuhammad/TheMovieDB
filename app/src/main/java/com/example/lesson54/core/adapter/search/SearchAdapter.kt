@@ -16,6 +16,8 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapterHolder>() {
         }
     var onScrollEnd: (() -> Unit)? = null
 
+    var onItemClicka: ((result: Result) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapterHolder =
         SearchAdapterHolder(
             ItemSearchBinding.inflate(
@@ -29,6 +31,10 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapterHolder>() {
         holder.bindData(data = data[position])
         if (position == data.size - 1) {
             onScrollEnd?.invoke()
+        }
+
+        holder.binding.root.setOnClickListener {
+            onItemClicka?.invoke(data[position])
         }
     }
 

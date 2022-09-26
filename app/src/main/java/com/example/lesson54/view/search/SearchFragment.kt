@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lesson54.core.adapter.search.SearchAdapter
 import com.example.lesson54.core.models.movieType.Result
@@ -13,6 +14,7 @@ import com.example.lesson54.core.presenter.HomePresenter
 import com.example.lesson54.core.presenter.SearchPresenterImp
 import com.example.lesson54.databinding.FragmentSearchBinding
 import com.example.lesson54.view.base.BaseFragment
+import com.example.lesson54.view.home.HomeFragmentDirections
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -76,6 +78,12 @@ class SearchFragment : BaseFragment(), HomePresenter.View {
         binding.back.setOnClickListener {
             requireActivity().onBackPressed()
         }
+
+        adapter.onItemClicka = {
+            val action = SearchFragmentDirections.actionSearchFragmentToMovieFragment("${it.id}")
+            findNavController().navigate(action)
+        }
+
     }
 
     override fun onFragmentCreated() {}
