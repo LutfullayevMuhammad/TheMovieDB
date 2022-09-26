@@ -25,7 +25,7 @@ interface MovieAPI {
         @Query("api_key") apiKey: String,
         @Query("language") lang: String,
         @Query("query") movieType: String,
-        @Query("page") page: String
+        @Query("page") page: Int
     ): Single<MovieTypeResponse>
 
     @GET("3/movie/{movie_id}")

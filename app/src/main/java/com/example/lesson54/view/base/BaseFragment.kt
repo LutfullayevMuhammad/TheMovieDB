@@ -26,8 +26,8 @@ abstract class BaseFragment : Fragment() {
         onFragmentCreated()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onStop() {
+        super.onStop()
         onFragmentClosed()
     }
 

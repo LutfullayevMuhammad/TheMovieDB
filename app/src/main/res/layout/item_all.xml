@@ -16,6 +16,7 @@
         app:layout_constraintBottom_toTopOf="@id/all_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@null"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/itemShapeStyle"
         tools:src="@drawable/download" />

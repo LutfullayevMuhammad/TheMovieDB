@@ -11,14 +11,18 @@ import com.example.lesson54.core.models.movieType.Result
 interface HomePresenter {
     interface Presenter {
         fun loadData()
+        fun searchData(text:String)
+        fun loadNextData(text: String)
         fun refreshData()
         fun loadGenres()
         fun cancel()
+        fun destroy()
     }
 
     interface View {
         fun dataState(isLoading: Boolean)
         fun getData(data: ArrayList<Result>)
+        fun setNextData(data: ArrayList<Result>)
         fun showError(message: String)
     }
 

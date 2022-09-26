@@ -25,6 +25,16 @@ class MainPresenterImp(
         upcomingMovieRequest()
     }
 
+    override fun searchData(text: String) {
+
+    }
+
+
+    override fun loadNextData(text: String) {
+
+    }
+
+
     private fun popularMovieRequest() {
         Thread.sleep(2000)
 
@@ -36,7 +46,7 @@ class MainPresenterImp(
                 lang = "en-EN",
                 apiKey = "ae228a09fd0c71679dabcf913aea5d11"
             )
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<MovieTypeResponse>() {
                     override fun onSuccess(t: MovieTypeResponse) {
@@ -59,7 +69,7 @@ class MainPresenterImp(
                 lang = "en-EN",
                 apiKey = "ae228a09fd0c71679dabcf913aea5d11"
             )
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<MovieTypeResponse>() {
                     override fun onSuccess(t: MovieTypeResponse) {
@@ -82,7 +92,7 @@ class MainPresenterImp(
                 lang = "en-EN",
                 apiKey = "ae228a09fd0c71679dabcf913aea5d11"
             )
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<MovieTypeResponse>() {
                     override fun onSuccess(t: MovieTypeResponse) {
@@ -105,7 +115,7 @@ class MainPresenterImp(
                 lang = "en-EN",
                 apiKey = "ae228a09fd0c71679dabcf913aea5d11"
             )
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<MovieTypeResponse>() {
                     override fun onSuccess(t: MovieTypeResponse) {
@@ -126,7 +136,7 @@ class MainPresenterImp(
 
     override fun loadGenres() {
         MovieAPIClient.movieAPI().genres()
-            .subscribeOn(Schedulers.newThread())
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<MovieGenreResponse> {
                 override fun onSubscribe(d: Disposable) {}
@@ -142,7 +152,12 @@ class MainPresenterImp(
     }
 
     override fun cancel() {
-        compositeDisposable.dispose()
+        if (!compositeDisposable.isDisposed) {
+            compositeDisposable.dispose()
+        }
     }
 
+    override fun destroy() {
+        compositeDisposable.clear()
+    }
 }

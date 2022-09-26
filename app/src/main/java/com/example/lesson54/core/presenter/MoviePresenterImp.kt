@@ -26,6 +26,16 @@ class MoviePresenterImp(
         actorMovieRequest()
     }
 
+    override fun searchData(text: String) {
+
+    }
+
+
+    override fun loadNextData(text: String) {
+
+    }
+
+
     private fun movieRequest() {
 
         val call = MovieAPIClient.movieAPI()
@@ -35,7 +45,7 @@ class MoviePresenterImp(
                 lang = "en-EN",
                 apiKey = "ae228a09fd0c71679dabcf913aea5d11"
             )
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<MovieResponse>() {
                     override fun onSuccess(t: MovieResponse) {
@@ -59,7 +69,7 @@ class MoviePresenterImp(
                 apiKey = "ae228a09fd0c71679dabcf913aea5d11",
                 lang = "en-EN"
             )
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<MovieActorsResponse>() {
                     override fun onSuccess(t: MovieActorsResponse) {
@@ -84,7 +94,7 @@ class MoviePresenterImp(
                 lang = "en-EN",
 
                 )
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<MovieTrailersResponse>() {
                     override fun onSuccess(t: MovieTrailersResponse) {
@@ -108,7 +118,7 @@ class MoviePresenterImp(
                 apiKey = "ae228a09fd0c71679dabcf913aea5d11",
                 lang = "en-EN",
             )
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
                     DisposableSingleObserver<MovieTypeResponse>() {
                     override fun onSuccess(t: MovieTypeResponse) {
@@ -130,8 +140,14 @@ class MoviePresenterImp(
 
     override fun loadGenres() {}
 
+
     override fun cancel() {
-        compositeDisposable.dispose()
+        if (!compositeDisposable.isDisposed) {
+            compositeDisposable.dispose()
+        }
     }
 
+    override fun destroy() {
+        compositeDisposable.clear()
+    }
 }

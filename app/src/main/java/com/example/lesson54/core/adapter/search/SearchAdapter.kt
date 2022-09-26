@@ -1,6 +1,5 @@
 package com.example.lesson54.core.adapter.search
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,9 +10,16 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapterHolder>() {
 
     var data = ArrayList<Result>()
         set(value) {
+            data.clear()
             field.addAll(value)
-            notifyItemRangeInserted(data.size - value.size, value.size)
+            notifyDataSetChanged()
         }
+
+    fun addData(data: ArrayList<Result>) {
+        this.data.addAll(data)
+        notifyItemRangeInserted(this.data.size - data.size, data.size)
+    }
+
     var onScrollEnd: (() -> Unit)? = null
 
     var onItemClicka: ((result: Result) -> Unit)? = null
