@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.example.lesson54.core.adapter.movieType1.MovieType1ListAdapter
@@ -21,7 +20,6 @@ import com.example.lesson54.databinding.FragmentHomeBinding
 import com.example.lesson54.view.activity.MainActivity
 import com.example.lesson54.view.base.BaseFragment
 import java.util.*
-import kotlin.collections.ArrayList
 
 class HomeFragment : BaseFragment(), HomePresenter.MainView {
 
@@ -98,6 +96,24 @@ class HomeFragment : BaseFragment(), HomePresenter.MainView {
                 }
             }
         })
+
+        nowPlayingListAdapter.onItemClicka = {
+            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment("${it.id}")
+            findNavController().navigate(action)
+        }
+        topRatedListAdapter.onItemClicka = {
+            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment("${it.id}")
+            findNavController().navigate(action)
+        }
+        popularListAdapter.onItemClick = {
+            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment("${it.id}")
+            findNavController().navigate(action)
+        }
+        upcomingListAdapter.onItemClicka = {
+            val action = HomeFragmentDirections.actionHomeFragmentToMovieFragment("${it.id}")
+            findNavController().navigate(action)
+        }
+
         binding.searchHome.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
             findNavController().navigate(action)

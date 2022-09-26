@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:padding="1"
+        android:padding="1dp"
         android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@id/item_name"
         app:layout_constraintEnd_toEndOf="parent"

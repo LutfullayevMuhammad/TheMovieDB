@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lesson54.core.adapter.allMovies.AllMoviesAdapter
@@ -13,6 +14,7 @@ import com.example.lesson54.core.presenter.AllPresenterImp
 import com.example.lesson54.core.presenter.HomePresenter
 import com.example.lesson54.databinding.FragmentAllBinding
 import com.example.lesson54.view.base.BaseFragment
+import com.example.lesson54.view.home.HomeFragmentDirections
 import kotlin.collections.ArrayList
 
 class AllFragment : BaseFragment(), HomePresenter.View {
@@ -54,6 +56,12 @@ class AllFragment : BaseFragment(), HomePresenter.View {
             presenter?.loadData()
             pageNumber++
         }
+
+        adapter.onItemClicka = {
+            val action = AllFragmentDirections.actionAllFragmentToMovieFragment("${it.id}")
+            findNavController().navigate(action)
+        }
+
     }
 
     override fun onFragmentCreated() {}

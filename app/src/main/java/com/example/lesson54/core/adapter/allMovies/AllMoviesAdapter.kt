@@ -16,6 +16,8 @@ class AllMoviesAdapter : RecyclerView.Adapter<AllMoviesAdapterHolder>() {
         }
     var onScrollEnd: (() -> Unit)? = null
 
+    var onItemClicka: ((result: Result) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllMoviesAdapterHolder =
         AllMoviesAdapterHolder(
             ItemAllBinding.inflate(
@@ -29,6 +31,10 @@ class AllMoviesAdapter : RecyclerView.Adapter<AllMoviesAdapterHolder>() {
         holder.bindData(data = data[position])
         if (position == data.size - 1) {
             onScrollEnd?.invoke()
+        }
+
+        holder.binding.root.setOnClickListener {
+            onItemClicka?.invoke(data[position])
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.lesson54.core.presenter
 
 import com.example.lesson54.core.models.movie.MovieResponse
+import com.example.lesson54.core.models.movie.ProductionCountry
 import com.example.lesson54.core.models.movieActors.MovieActorsResponse
 import com.example.lesson54.core.models.movieGenre.MovieGenreResponse
 import com.example.lesson54.core.models.movieTrailers.MovieTrailersResponse
@@ -98,10 +99,9 @@ class MoviePresenterImp(
         val call = MovieAPIClient.movieAPI()
         compositeDisposable.add(
             call.movieSimilar(
-                movieId = "upcoming",
+                movieId = movieId,
                 apiKey = "ae228a09fd0c71679dabcf913aea5d11",
                 lang = "en-EN",
-
                 )
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :

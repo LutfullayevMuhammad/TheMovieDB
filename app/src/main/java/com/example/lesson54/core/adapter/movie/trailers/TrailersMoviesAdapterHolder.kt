@@ -14,31 +14,7 @@ class TrailersMoviesAdapterHolder (val binding: ItemTrailersBinding) :
 
     @SuppressLint("SetTextI18n")
     fun bindData(data: TrailersResult) {
-        binding.itemImage.load("https://image.tmdb.org/t/p/w500" + data.posterPath)
-        binding.itemTitle.text = data.title
-        val date: String = buildString {
-            for (i in 0 until 4) {
-                append(data.releaseDate[i])
-            }
-        }
-        val movieGenres = ArrayList<String>()
-        MainActivity.GENRES_DATA.forEach {
-            data.genreIds.forEach { genre ->
-                if (genre == it.id) {
-                    movieGenres.add(it.name)
-                }
-            }
-        }
-        if (binding.itemSubtitle.text == "") {
-            binding.itemSubtitle.text = "$date • " + buildString {
-                if (movieGenres.isNotEmpty()) {
-                    for (i in 0 until movieGenres.size - 1) {
-                        append("${movieGenres[i]}, ")
-                    }
-                    append(movieGenres[movieGenres.size - 1])
-                }
-            }
-        }
+        binding.itemImage.load("https://img.youtube.com/vi/${data.key}/mqdefault.jpg")
     }
 
 }
