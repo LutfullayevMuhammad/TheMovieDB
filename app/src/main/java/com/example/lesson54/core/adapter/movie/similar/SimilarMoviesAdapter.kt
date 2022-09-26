@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lesson54.core.models.similarMovies.SimilarResult
+import com.example.lesson54.core.models.movieType.Result
 import com.example.lesson54.databinding.ItemMoviesBinding
 
 class SimilarMoviesAdapter : RecyclerView.Adapter<SimilarMoviesAdapterHolder>() {
-    var data = ArrayList<SimilarResult>()
+    var data = ArrayList<Result>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field.clear()

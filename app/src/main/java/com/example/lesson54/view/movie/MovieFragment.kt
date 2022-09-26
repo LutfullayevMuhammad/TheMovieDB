@@ -15,7 +15,7 @@ import com.example.lesson54.core.adapter.movie.trailers.TrailersMoviesAdapter
 import com.example.lesson54.core.models.movie.MovieResponse
 import com.example.lesson54.core.models.movieActors.Cast
 import com.example.lesson54.core.models.movieTrailers.TrailersResult
-import com.example.lesson54.core.models.similarMovies.SimilarResult
+import com.example.lesson54.core.models.movieType.Result
 import com.example.lesson54.core.presenter.HomePresenter
 import com.example.lesson54.core.presenter.MoviePresenterImp
 import com.example.lesson54.databinding.FragmentMovieBinding
@@ -135,7 +135,7 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
         trailersMoviesAdapter.data = data
     }
 
-    override fun getSimilarMovies(data: ArrayList<SimilarResult>) {
+    override fun getSimilarMovies(data: ArrayList<Result>) {
         similarMoviesAdapter.data = data
     }
 

@@ -3,10 +3,7 @@ package com.example.lesson54.core.adapter.movie.similar
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.lesson54.core.models.movieActors.Cast
 import com.example.lesson54.core.models.movieType.Result
-import com.example.lesson54.core.models.similarMovies.SimilarResult
-import com.example.lesson54.databinding.ItemActorBinding
 import com.example.lesson54.databinding.ItemMoviesBinding
 import com.example.lesson54.view.activity.MainActivity
 
@@ -14,7 +11,7 @@ class SimilarMoviesAdapterHolder(val binding: ItemMoviesBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     @SuppressLint("SetTextI18n")
-    fun bindData(data: SimilarResult) {
+    fun bindData(data: Result) {
         binding.itemImage.load("https://image.tmdb.org/t/p/w500" + data.posterPath)
         binding.itemTitle.text = data.title
         val date: String = buildString {

@@ -1,19 +1,15 @@
 package com.example.lesson54.core.presenter
 
 import com.example.lesson54.core.models.movie.MovieResponse
-import com.example.lesson54.core.models.movie.ProductionCountry
 import com.example.lesson54.core.models.movieActors.Cast
 import com.example.lesson54.core.models.movieActors.MovieActorsResponse
-import com.example.lesson54.core.models.movieGenre.MovieGenreResponse
 import com.example.lesson54.core.models.movieTrailers.MovieTrailersResponse
 import com.example.lesson54.core.models.movieTrailers.TrailersResult
-import com.example.lesson54.core.models.similarMovies.MovieSimilarResponse
-import com.example.lesson54.core.models.similarMovies.SimilarResult
+import com.example.lesson54.core.models.movieType.MovieTypeResponse
+import com.example.lesson54.core.models.movieType.Result
 import com.example.lesson54.core.network.MovieAPIClient
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.SingleObserver
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -114,10 +110,10 @@ class MoviePresenterImp(
             )
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(object :
-                    DisposableSingleObserver<MovieSimilarResponse>() {
-                    override fun onSuccess(t: MovieSimilarResponse) {
+                    DisposableSingleObserver<MovieTypeResponse>() {
+                    override fun onSuccess(t: MovieTypeResponse) {
                         view.dataState(false)
-                        view.getSimilarMovies(t.results as ArrayList<SimilarResult>)
+                        view.getSimilarMovies(t.results as ArrayList<Result>)
                     }
 
                     override fun onError(e: Throwable) {
