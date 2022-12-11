@@ -17,7 +17,6 @@ class SearchPresenterImp(private val view: HomePresenter.View, ) :
 
     private var pageNum: Int=1
 
-
     private var searchText=""
 
     val call = MovieAPIClient.movieAPI()

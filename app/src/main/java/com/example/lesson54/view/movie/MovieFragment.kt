@@ -58,8 +58,6 @@ class MovieFragment : BaseFragment(), HomePresenter.MovieView {
             requireActivity().onBackPressed()
         }
 
-
-
     }
 
     override fun onFragmentCreated() {
